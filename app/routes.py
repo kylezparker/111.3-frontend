@@ -3,7 +3,8 @@ from flask import (
     render_template
 )
 import requests
-URL ="http://127.0.0.1:5001/users"
+
+URL ="http://127.0.0.1:5000/users"
 
 app= Flask(__name__)
 
@@ -14,7 +15,7 @@ def get_index():
 
 @app.get("/users")
 def display_users():
-    user_list =request.get(URL).json()
+    user_list =requests.get(URL).json()
     return render_template(
         "users.html", users=user_list.get("users")
     )
